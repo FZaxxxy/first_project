@@ -1,0 +1,8 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": ["opencode.json", "opencode.jsonc"],
+            "url": "./config.schema.json"
+        }
+    ]
+}
