@@ -116,7 +116,6 @@ void Planner_StartPick(void)
 
 void Planner_Tick(void)
 {
-    static float prev_phase = PHASE_IDLE;   /* 用于检测阶段刚切换 */
     float x, y, z;
 
     if (g_state != PLANNER_RUNNING) return;
@@ -129,7 +128,6 @@ void Planner_Tick(void)
             g_state = PLANNER_ERROR;
             break;
         }
-        prev_phase = PHASE_APPROACH;
         set_phase(PHASE_DESCEND);
         break;
 
@@ -210,8 +208,6 @@ void Planner_Tick(void)
     default:
         break;
     }
-
-    (void)prev_phase;
 }
 
 int Planner_GotoXYZ(float x, float y, float z)

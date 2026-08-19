@@ -42,11 +42,17 @@ void PCA9685_Cascade_Init(PCA9685_Cascade_t *cas)
 
     /* 板 1 */
     PCA9685_Init(&cas->boards[0], PCA9685_HI2C, PCA9685_BOARD1_ADDR);
-    if (cas->boards[0].init_ok) cas->count++;
+    if (cas->boards[0].init_ok) {
+        PCA9685_SetPWMFreq(&cas->boards[0], PCA9685_PWM_FREQ_HZ);
+        cas->count++;
+    }
 
     /* 板 2 */
     PCA9685_Init(&cas->boards[1], PCA9685_HI2C, PCA9685_BOARD2_ADDR);
-    if (cas->boards[1].init_ok) cas->count++;
+    if (cas->boards[1].init_ok) {
+        PCA9685_SetPWMFreq(&cas->boards[1], PCA9685_PWM_FREQ_HZ);
+        cas->count++;
+    }
 }
 
 /**

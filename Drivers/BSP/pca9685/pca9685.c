@@ -7,6 +7,8 @@
 
 /* 振荡器频率 25MHz，用于计算预分频 */
 #define PCA9685_OSC_FREQ       25000000UL
+/* 默认 PWM 频率（Hz），级联层可按 config.h 重新设置 */
+#define PCA9685_DEFAULT_FREQ   50u
 
 /**
  * @brief  向 PCA9685 写一个字节寄存器
@@ -55,7 +57,7 @@ void PCA9685_Init(PCA9685_Dev_t *dev, I2C_HandleTypeDef *hi2c, uint8_t addr)
 
     dev->hi2c    = hi2c;
     dev->addr    = addr;
-    dev->freq    = PCA9685_PWM_FREQ_HZ;
+    dev->freq    = PCA9685_DEFAULT_FREQ;
     dev->init_ok = 0;
 
     PCA9685_Reset(dev);
@@ -69,8 +71,8 @@ void PCA9685_Init(PCA9685_Dev_t *dev, I2C_HandleTypeDef *hi2c, uint8_t addr)
     /* 默认输出推挽模式 */
     PCA9685_WriteByte(dev, PCA9685_REG_MODE2, 0x04);
 
-    /* 设置 50Hz 输出频率 */
-    PCA9685_SetPWMFreq(dev, PCA9685_PWM_FREQ_HZ);
+    /* 设置默认 50Hz 输出频率 */
+    PCA9685_SetPWMFreq(dev, PCA9685_DEFAULT_FREQ);
 
     /* 关闭所有通道输出（占空比 0） */
     PCA9685_SetPWMCounts(dev, 0xFF, 0, 0);   /* 通道 0xFF 表示"所有通道" */
