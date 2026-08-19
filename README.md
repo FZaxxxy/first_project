@@ -13,7 +13,7 @@
 ## 一、代码分区总览（对应四阶段）
 
 ```
-robotproject/
+first_project/
 ├── Core/                    # ★ 主程序与全局配置
 │   ├── Inc/
 │   │   ├── config.h         #   全局配置（所有"须自定义"参数集中于此）

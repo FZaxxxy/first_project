@@ -92,13 +92,15 @@ void SystemClock_Config(void)
     RCC_OscInitTypeDef osc = {0};
     RCC_ClkInitTypeDef clk = {0};
 
-    /* 使能 HSI 并配置 PLL: 8MHz x9 = 72MHz */
-    osc.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-    osc.HSIState       = RCC_HSI_ON;
-    osc.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-    osc.PLL.PLLState   = RCC_PLL_ON;
-    osc.PLL.PLLSource  = RCC_PLLSOURCE_HSI_DIV2;   /* 8/2=4MHz */
-    osc.PLL.PLLMUL     = RCC_PLL_MUL18;            /* 4x18=72MHz */
+    /* 外部 8MHz 晶振 -> PLL x9 -> 72MHz
+     * ★ 须自定义：若板卡无外部晶振(HSE)，请改用 HSI 方案
+     *   (HSI 只能达到 64MHz: 8/2 * 16) */
+    osc.OscillatorType      = RCC_OSCILLATORTYPE_HSE;
+    osc.HSEState            = RCC_HSE_ON;
+    osc.HSEPredivValue      = RCC_HSE_PREDIV_DIV1;
+    osc.PLL.PLLState        = RCC_PLL_ON;
+    osc.PLL.PLLSource       = RCC_PLLSOURCE_HSE;
+    osc.PLL.PLLMUL          = RCC_PLL_MUL9;          /* 8MHz x 9 = 72MHz */
     if (HAL_RCC_OscConfig(&osc) != HAL_OK) {
         Error_Handler();
     }
@@ -145,6 +147,7 @@ void HAL_I2C1_MspInit(I2C_HandleTypeDef *hi2c)
 {
     GPIO_InitTypeDef gpio = {0};
 
+    (void)hi2c;
     __HAL_RCC_I2C1_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
 
@@ -176,6 +179,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
 {
     GPIO_InitTypeDef gpio = {0};
 
+    (void)huart;
     __HAL_RCC_USART1_CLK_ENABLE();
     __HAL_RCC_GPIOA_CLK_ENABLE();
 

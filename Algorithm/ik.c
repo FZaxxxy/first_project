@@ -245,7 +245,6 @@ int IK_Solve(IK_Config_t *cfg,
     float q[JOINT_NUM], q0[JOINT_NUM];
     float R_tgt[3][3];
     float J[6][JOINT_NUM];
-    float e[6];
     int iter;
     int use_ori = (rpy_deg != 0);
 

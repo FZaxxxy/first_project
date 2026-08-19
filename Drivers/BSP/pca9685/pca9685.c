@@ -126,7 +126,7 @@ void PCA9685_SetPWMCounts(PCA9685_Dev_t *dev, uint8_t ch, uint16_t on, uint16_t 
 {
     uint8_t reg;
 
-    if (dev == 0 || ch > 0xFF) return;
+    if (dev == 0 || (ch > 15u && ch != 0xFFu)) return;
 
     reg = (ch == 0xFF) ? PCA9685_REG_ALL_LED_ON_L
                        : PCA9685_REG_LED0_ON_L + 4u * ch;

@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "name": "STM32F103C8T6-HAL",
+            "includePath": [
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Drivers/BSP/pca9685",
+                "${workspaceFolder}/Drivers/BSP/servo",
+                "${workspaceFolder}/Drivers/BSP/button",
+                "${workspaceFolder}/Drivers/BSP/sensor",
+                "${workspaceFolder}/Motion",
+                "${workspaceFolder}/Algorithm",
+                "${workspaceFolder}/App",
+                "${workspaceFolder}/**",
+                "C:/Users/miku/STM32Cube/Repository/STM32Cube_FW_F1_V1.8.7/Drivers/STM32F1xx_HAL_Driver/Inc",
+                "C:/Users/miku/STM32Cube/Repository/STM32Cube_FW_F1_V1.8.7/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
+                "C:/Users/miku/STM32Cube/Repository/STM32Cube_FW_F1_V1.8.7/Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+                "C:/Users/miku/STM32Cube/Repository/STM32Cube_FW_F1_V1.8.7/Drivers/CMSIS/Include"
+            ],
+            "defines": [
+                "USE_HAL_DRIVER",
+                "STM32F103xB"
+            ],
+            "compilerPath": "D:/MinGW-w64/mingw64/bin/gcc.exe",
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "gcc-arm",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "C:/Users/miku/STM32Cube/Repository/STM32Cube_FW_F1_V1.8.7/Drivers/STM32F1xx_HAL_Driver/Inc",
+                    "C:/Users/miku/STM32Cube/Repository/STM32Cube_FW_F1_V1.8.7/Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+                    "C:/Users/miku/STM32Cube/Repository/STM32Cube_FW_F1_V1.8.7/Drivers/CMSIS/Include"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}

@@ -16,8 +16,14 @@ extern I2C_HandleTypeDef   hi2c1;    /* I2C1：连接两片 PCA9685 */
 extern UART_HandleTypeDef  huart1;   /* USART1：串口指令 + 日志 */
 extern TIM_HandleTypeDef   htim2;    /* TIM2：1ms 运动控制节拍 */
 
-/** 系统时钟配置（CubeMX 生成，示例：HSI 8MHz -> PLL x9 -> 72MHz） */
+/** 系统时钟配置（CubeMX 生成，示例：HSE 8MHz -> PLL x9 -> 72MHz） */
 void SystemClock_Config(void);
+
+/* ==================== 外设初始化（CubeMX 生成的 MX_* 函数） ==================== */
+void MX_GPIO_Init(void);
+void MX_I2C1_Init(void);
+void MX_USART1_UART_Init(void);
+void MX_TIM2_Init(void);
 
 /** 全局错误处理 */
 void Error_Handler(void);

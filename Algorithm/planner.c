@@ -116,8 +116,6 @@ void Planner_StartPick(void)
 
 void Planner_Tick(void)
 {
-    float x, y, z;
-
     if (g_state != PLANNER_RUNNING) return;
 
     switch (g_phase) {
